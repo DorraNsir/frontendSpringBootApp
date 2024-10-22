@@ -12,14 +12,29 @@
               <th scope="col">Film Name</th>
               <th scope="col">Price</th>
               <th scope="col">Release Date</th>
+              <th scope="col">Genre</th>
+              <th scope="col">Actions</th> <!-- New column for actions -->
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let film of films">
               <td>{{film.idFilm}}</td>
               <td>{{film.nomFilm}}</td>
-              <td>{{film.prixFilm}}</td>
+              <td>{{film.prixFilm | currency:'EUR':'symbol':'1.2-2'}}</td>
               <td>{{film.dateCreation | date:'dd/MM/yyyy'}}</td>
+              <td>{{film.genreFilm.nomG}}</td>
+              <td>
+                <div class="d-flex justify-content-between">
+                  <!-- Modify Button -->
+                  <a class="btn btn-warning btn-sm me-2" [routerLink]="['/updatefilm',film.idFilm]">
+                    <i class="fas fa-edit"></i> Modifier
+                  </a>
+                  <!-- Delete Button -->
+                  <a class="btn btn-danger btn-sm" (click)="deleteFilm(film)" >
+                    <i class="fas fa-trash"></i> Supprimer
+                  </a>
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>

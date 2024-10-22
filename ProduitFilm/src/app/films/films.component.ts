@@ -1,3 +1,4 @@
+import { FilmService } from './../services/film.service';
 import { Component, OnInit } from '@angular/core';
 import { Film } from '../model/film.model';
 
@@ -6,18 +7,31 @@ import { Film } from '../model/film.model';
   templateUrl: './films.component.html'
 })
 export class FilmsComponent implements OnInit {
-  films?:Film[];
-  constructor() {
-    this.films = [ 
-      {idFilm : 1, nomFilm : "Inception", prixFilm : 15.50, dateCreation : new Date("07/16/2010")},
-      {idFilm : 2, nomFilm : "Interstellar", prixFilm : 18.00, dateCreation : new Date("11/07/2014")},
-      {idFilm : 3, nomFilm : "The Matrix", prixFilm : 12.75, dateCreation : new Date("03/31/1999")}
-    ];
-  }
-  
+  films!:Film[];
+  constructor(private filmService: FilmService ) {
+    
+    }
+    
   ngOnInit(): void {
-      
-  }
+    this.chargerFilms();
+    }
+    chargerFilms(){
+    this.filmService.listefilms().subscribe(f => {
+    console.log(f);
+    this.films = f;
+    });
+    }
+    deleteFilm(film:Film){
+      let conf = confirm("Etes-vous sûr ?");
+      if (conf)
+        this.filmService.supprimerFilm(film.idFilm).subscribe(() => {
+        console.log("produit supprimé");
+        this.chargerFilms();
+        });
+    }
+
+
+
 
 
 

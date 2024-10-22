@@ -1,0 +1,54 @@
+<div class="container mt-5">
+    <div class="row mb-4">
+      <div class="col text-center">
+        <h2 class="font-weight-bold text-primary">Modifier un Film</h2>
+      </div>
+    </div>
+  
+    <form class="row g-3">
+      <!-- ID Produit -->
+      <div  class="col-md-6">
+        <label for="idFilm" class="form-label font-weight-bold">ID Film</label>
+        <input readonly type="text" id="idFilm" [(ngModel)]="currentFilm.idFilm"
+          name="idFilm" class="form-control" placeholder="Enter Film ID">
+      </div>
+  
+      <!-- Nom Produit -->
+      <div class="col-md-6">
+        <label for="nomFilm" class="form-label font-weight-bold">Nom Produit</label>
+        <input type="text" id="nomFilm" [(ngModel)]="currentFilm.nomFilm"
+          name="nomFilm" class="form-control" placeholder="Enter Film name">
+      </div>
+  
+      <!-- Prix Produit -->
+      <div class="col-md-6">
+        <label for="prixFilm" class="form-label font-weight-bold">Prix Produit</label>
+        <input type="number" id="prixFilm" [(ngModel)]="currentFilm.prixFilm"
+          name="prixFilm" class="form-control" placeholder="Enter Film price">
+      </div>
+
+      <div class="col-md-6">
+        <label for="dateCreation" class="form-label font-weight-bold">Date création</label>
+        <input type="date" id="prixFilm" [ngModel]="currentFilm.dateCreation | date: 'yyyy-MM-dd' "
+        (ngModelChange)=" currentFilm.dateCreation= $event" name="dateCreation"
+         class="form-control" placeholder="Enter Film price">
+      </div>
+
+      <div class="col-md-6 mt-4">
+        <select class="form-control form-control-lg" id="idG" name="idG"
+        [(ngModel)]="updatedGId">
+            <option *ngFor="let g of genres" [value]="g.idG" >
+            {{g.nomG}}
+            </option>
+        </select>
+      </div>
+
+
+  
+      <!-- Submit Button -->
+      <div class="col-md-12 text-center mt-4">
+        <a type="submit" (click)="updateFilm()" class="btn btn-primary px-4">modifier</a>
+      </div>
+    </form>
+  </div>
+  

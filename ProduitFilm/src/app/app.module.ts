@@ -6,17 +6,25 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FilmsComponent } from './films/films.component';
 import { AddFilmComponent } from './add-film/add-film.component';
+import { FormsModule } from '@angular/forms';
+import { UpdateFilmComponent } from './update-film/update-film.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     FilmsComponent,
-    AddFilmComponent
+    AddFilmComponent,
+    UpdateFilmComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule  
   ],
   providers: [
     provideClientHydration()

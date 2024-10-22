@@ -1,1 +1,40 @@
-<p>add-film works!</p>
+<div class="container mt-5">
+    <div>
+      <h2 class="mb-4 text-center">Ajouter un Film</h2>
+    </div>
+    <form>
+      <div class="row">
+        <!-- <div class="col-sm-12 col-md-6 mb-3">
+          <label>ID Film</label>
+          <input type="text" [(ngModel)]="newFilm.idFilm" name="idFilm" class="form-control" placeholder="Enter Film ID">
+        </div> -->
+        <div class="col-sm-12 col-md-6 mb-3">
+          <label>Nom Film</label>
+          <input type="text" [(ngModel)]="newFilm.nomFilm" name="nomFilm" class="form-control" placeholder="Enter Film Name">
+        </div>
+        <div class="col-sm-12 col-md-6 mb-3">
+          <label>Prix Film</label>
+          <input type="number" [(ngModel)]="newFilm.prixFilm" name="prixFilm" class="form-control" placeholder="Enter Film Price">
+        </div>
+        <div class="col-sm-12 col-md-6 mb-3">
+          <label>Date de création</label>
+          <input type="date" [(ngModel)]="newFilm.dateCreation" name="dateCreation" class="form-control">
+        </div>
+
+        <div class="col-sm-12 col-md-6 mb-3">
+          <label>Genre</label>
+          <select class="form-control form-control-lg" id="idCat" name="idCat"
+          [(ngModel)]="newIdG">
+            <option *ngFor="let g of genres" [value]="g.idG" >
+              {{g.nomG}}
+            </option>
+          </select>
+        </div>
+
+      </div>
+      <div class="text-center">
+        <button type="submit" (click)="addFilm()" class="btn btn-success btn-lg">Ajouter</button>
+      </div>
+    </form>
+  </div>
+  
