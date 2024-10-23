@@ -1,0 +1,56 @@
+<div class="container mt-5">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Liste des Films</h6>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+            <!-- Rechercher par nom des produits en utilisant une api -->
+            <!-- <div class="form-group mx-sm-3 mb-2 mt-2 ">
+                <label>Nom Film</label>
+                <input type="text" class="form-control" [(ngModel)]="nomFilm" name="nomProduit" class="form-control">
+                <button type="submit" (click)="rechercherFilms()" class="btn btn-primary mb-2 ml-2">Rechercher</button>
+                </div> -->
+                <!-- Rechercher par nom des produits en utilisant l’event keyup -->
+                <form class="form-inline">
+                    <div class="form-group mx-sm-3 mb-2 mt-2 ">
+                    <label>Nom Film</label>
+                    <input class="form-control" #searchTerm (keyup)="onKeyUp(searchTerm.value)">
+                    </div>
+                    </form>
+                <!-- Rechercher par nom des produits en utilisant un pipe -->
+                <!-- <form class="form-inline">
+                    <div class="form-group mx-sm-3 mb-2 mt-2 ">
+                    <label>Nom Film</label>
+                    <input #nom [(ngModel)]="searchTerm" name="searchTerm" class="form-control" >
+                    </div>
+                    </form> -->
+                
+          <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Film Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Release Date</th>
+                <th scope="col">Genre</th>
+              </tr>
+            </thead>
+            <!-- *ngFor="let film of films | searchFilter: searchTerm " -->
+            <tbody  >
+                <!-- *ngFor="let film of films" -->
+              <tr *ngFor="let film of films">
+                <td>{{film.idFilm}}</td>
+                <td>{{film.nomFilm}}</td>
+                <td>{{film.prixFilm | currency:'EUR':'symbol':'1.2-2'}}</td>
+                <td>{{film.dateCreation | date:'dd/MM/yyyy'}}</td>
+                <td>{{film.genreFilm.nomG}}</td>
+              </tr>
+            </tbody>
+          </table>            
+        </div>
+      </div>
+    </div>
+  </div>
+
+

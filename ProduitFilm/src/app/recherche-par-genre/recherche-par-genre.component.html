@@ -1,0 +1,52 @@
+<div class="container mt-5">
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Liste des Films</h6>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+            <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+                <label>Genres </label>
+                    <select class="form-control form-control-lg" id="idCat" name="idCat"
+                    [(ngModel)]="IdGenre" (change)="onChange()">
+                        <option *ngFor="let gen of genres" value="{{gen.idG}}">
+                          {{gen.nomG}}
+                        </option>
+                    </select>
+                </div>
+          <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Film Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Release Date</th>
+                <th scope="col">Genre</th>
+                <!-- <th scope="col">Actions</th> -->
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let film of films">
+                <td>{{film.idFilm}}</td>
+                <td>{{film.nomFilm}}</td>
+                <td>{{film.prixFilm | currency:'EUR':'symbol':'1.2-2'}}</td>
+                <td>{{film.dateCreation | date:'dd/MM/yyyy'}}</td>
+                <td>{{film.genreFilm.nomG}}</td>
+                <!-- <td>
+                  <div class="d-flex justify-content-between">
+                    <a class="btn btn-warning btn-sm me-2" [routerLink]="['/updatefilm',film.idFilm]">
+                      <i class="fas fa-edit"></i> Modifier
+                    </a>
+                    <a class="btn btn-danger btn-sm" >
+                      <i class="fas fa-trash"></i> Supprimer
+                    </a>
+                  </div>
+                </td> -->
+              </tr>
+            </tbody>
+          </table>            
+        </div>
+      </div>
+    </div>
+  </div>
+

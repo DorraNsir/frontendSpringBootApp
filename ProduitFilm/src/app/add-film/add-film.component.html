@@ -23,9 +23,9 @@
 
         <div class="col-sm-12 col-md-6 mb-3">
           <label>Genre</label>
-          <select class="form-control form-control-lg" id="idCat" name="idCat"
+          <select class="form-control form-control-lg" id="idG" name="idG"
           [(ngModel)]="newIdG">
-            <option *ngFor="let g of genres" [value]="g.idG" >
+            <option *ngFor="let g of genreFilms" [value]="g.idG" >
               {{g.nomG}}
             </option>
           </select>

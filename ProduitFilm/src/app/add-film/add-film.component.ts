@@ -10,7 +10,7 @@
     templateUrl: './add-film.component.html'
   })
   export class AddFilmComponent implements OnInit {
-    genres! : Genre[];
+    genreFilms! : Genre[];
     newIdG! : number;
     newGenre! : Genre;
     newFilm=new Film();
@@ -20,13 +20,13 @@
       }
 
     ngOnInit(): void {
-        this.filmService.listeGenres().
-        subscribe(gen => {this.genres = gen;
-        console.log(gen);
-        });
+      this.filmService.listeGenres().subscribe(response => {
+        this.genreFilms = response._embedded.genreFilms;  // Access genres inside _embedded
+      });
       }
+        
     addFilm(){
-        this.newFilm.genreFilm = this.genres.find(g => g.idG == this.newIdG)!;
+        this.newFilm.genreFilm = this.genreFilms.find(g => g.idG == this.newIdG)!;
         this.filmService.ajouterfilm(this.newFilm)
         .subscribe(prod => {
         console.log(prod);

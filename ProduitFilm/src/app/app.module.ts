@@ -9,6 +9,11 @@ import { AddFilmComponent } from './add-film/add-film.component';
 import { FormsModule } from '@angular/forms';
 import { UpdateFilmComponent } from './update-film/update-film.component';
 import { HttpClientModule } from '@angular/common/http';
+import { RechercheParGenreComponent } from './recherche-par-genre/recherche-par-genre.component';
+import { RechercheParNomComponent } from './recherche-par-nom/recherche-par-nom.component';
+import { SearchFilterPipe } from './search-filter.pipe';
+import { ListeGenresComponent } from './liste-genres/liste-genres.component';
+import { UpdateGenreComponent } from './update-genre/update-genre.component';
 
 
 @NgModule({
@@ -17,7 +22,12 @@ import { HttpClientModule } from '@angular/common/http';
     NavbarComponent,
     FilmsComponent,
     AddFilmComponent,
-    UpdateFilmComponent
+    UpdateFilmComponent,
+    RechercheParGenreComponent,
+    RechercheParNomComponent,
+    SearchFilterPipe,
+    ListeGenresComponent,
+    UpdateGenreComponent
   ],
   imports: [
     BrowserModule,

@@ -37,7 +37,7 @@
       <div class="col-md-6 mt-4">
         <select class="form-control form-control-lg" id="idG" name="idG"
         [(ngModel)]="updatedGId">
-            <option *ngFor="let g of genres" [value]="g.idG" >
+            <option *ngFor="let g of genreFilms" [value]="g.idG" >
             {{g.nomG}}
             </option>
         </select>
