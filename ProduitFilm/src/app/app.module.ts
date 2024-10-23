@@ -14,6 +14,7 @@ import { RechercheParNomComponent } from './recherche-par-nom/recherche-par-nom.
 import { SearchFilterPipe } from './search-filter.pipe';
 import { ListeGenresComponent } from './liste-genres/liste-genres.component';
 import { UpdateGenreComponent } from './update-genre/update-genre.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { UpdateGenreComponent } from './update-genre/update-genre.component';
     RechercheParNomComponent,
     SearchFilterPipe,
     ListeGenresComponent,
-    UpdateGenreComponent
+    UpdateGenreComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

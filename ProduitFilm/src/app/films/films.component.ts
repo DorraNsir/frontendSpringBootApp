@@ -1,6 +1,7 @@
 import { FilmService } from './../services/film.service';
 import { Component, OnInit } from '@angular/core';
 import { Film } from '../model/film.model';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-films',
@@ -8,7 +9,7 @@ import { Film } from '../model/film.model';
 })
 export class FilmsComponent implements OnInit {
   films!:Film[];
-  constructor(private filmService: FilmService ) {
+  constructor(private filmService: FilmService ,public authService: AuthService) {
     
     }
     
