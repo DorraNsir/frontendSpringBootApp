@@ -28,9 +28,16 @@ genreUpdated(g:Genre){
   console.log("genre updated event",g);
   this.filmService.ajouterGenre(g).
    subscribe( ()=> this.chargerGenres());
-   this.ajout=false
-
+   this.ajout=false;
   }
+  // genreUpdated(g:Genre) {
+  //   this.updatedGenre=g;
+  //   this.ajout=false;
+  //   }
+  updateCat(g:Genre) {
+    this.updatedGenre=g;
+    }
+    
  
   chargerGenres(){
     this.filmService.listeGenres().

@@ -11,7 +11,9 @@ export class UpdateGenreComponent {
   genre!: Genre;
   @Output()
   genreUpdated = new EventEmitter<Genre>();
-  ajout:boolean=true;
+  @Input()
+  ajout!:boolean;
+
 
   constructor(private filmService: FilmService){}
 
