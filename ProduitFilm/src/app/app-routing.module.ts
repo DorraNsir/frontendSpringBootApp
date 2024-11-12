@@ -7,6 +7,9 @@ import { RechercheParGenreComponent } from './recherche-par-genre/recherche-par-
 import { RechercheParNomComponent } from './recherche-par-nom/recherche-par-nom.component';
 import { ListeGenresComponent } from './liste-genres/liste-genres.component';
 import { LoginComponent } from './login/login.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { filmGuard } from './guard/film.guard';
+
 
 const routes: Routes = [
   {path:"films",component:FilmsComponent},
@@ -16,7 +19,11 @@ const routes: Routes = [
   {path: "rechercheParGenre", component : RechercheParGenreComponent},
   {path: "rechercheParNom", component : RechercheParNomComponent},
   {path: "listeGenres", component : ListeGenresComponent},
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'app-forbidden', component: ForbiddenComponent},
+  {path : "add-produit", component : AddFilmComponent, canActivate:[filmGuard]},
+
 ];
 
 @NgModule({

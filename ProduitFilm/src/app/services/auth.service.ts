@@ -84,5 +84,4 @@ loadToken() {
 
    isTokenExpired(): Boolean{
   return this.helper.isTokenExpired(this.token); }
-   
-}
+   }

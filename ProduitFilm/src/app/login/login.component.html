@@ -24,3 +24,48 @@
     </div>
     </div>
     </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4">
+            <div class="card shadow-lg border-0 rounded-lg">
+                <div class="card-body p-4">
+                    <h3 class="text-center mb-4">login</h3>
+                    <div class="alert alert-danger" *ngIf="erreur==1">
+                        <strong>login ou mot de passe erronés..</strong>
+                        </div>
+                        
+                    <form>
+                        <div class="form-group mb-3">
+                            <label class="form-label" for="username">Nom Utilisateur :</label>
+                            <input 
+                                type="text" 
+                                id="username"
+                                name="username"
+                                class="form-control"
+                                [(ngModel)]="user.username" 
+                                placeholder="Entrez votre nom d'utilisateur">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="form-label" for="password">Mot de passe :</label>
+                            <input 
+                                type="password" 
+                                id="password"
+                                name="password"
+                                [(ngModel)]="user.password" 
+                                class="form-control"
+                                placeholder="Entrez votre mot de passe">
+                        </div>
+                        <div class="d-grid mt-4">
+                            <button 
+                                type="button" 
+                                (click)="onLoggedin()" 
+                                class="btn btn-success btn-block">
+                                Login
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

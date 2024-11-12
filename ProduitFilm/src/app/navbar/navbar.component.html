@@ -10,7 +10,8 @@
       
       <!-- Simple Links Instead of Dropdown -->
       <li class="nav-item">
-        <a class="nav-link" *ngIf="authService.isAdmin()" routerLink="addFilm">Ajouter</a>
+        <a class="nav-link" routerLink="addFilm" *ngIf="authService.isAdmin()">Ajouter</a>
+
       </li>
       <li class="nav-item">
         <!-- <a class="nav-link" routerLink="/films">Lister</a> -->
@@ -32,15 +33,16 @@
   
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <!-- *ngIf="!authService.isloggedIn"  -->
-        <a class="nav-link" routerLink="/login" >Login</a>
+        <a class="nav-link" routerLink="/login" *ngIf="!authService.isloggedIn" >Login</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#"(click)="logout()">Logout</a>
+        <a class="nav-link" href="#" *ngIf="authService.isloggedIn" (click)="onLogout()" >Logout</a>
+
       </li>
       <li class="nav-item">
         <a class="nav-link">{{authService.loggedUser}}
       </a>
       </li>
+      <li> <a class="nav-link">{{authService.loggedUser}}</a></li>
     </ul>
   </nav>

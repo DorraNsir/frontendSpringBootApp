@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   title = 'ProduitFilm';
 
+
   // Inject AuthService and Router through the constructor
   constructor(private authService: AuthService, private router: Router) {}
 

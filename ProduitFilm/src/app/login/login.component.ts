@@ -27,9 +27,4 @@ export class LoginComponent {
     }
     });
     }
-    
-      
-//alert('Login ou mot de passe incorrecte!');
-
-      
-}
+  }

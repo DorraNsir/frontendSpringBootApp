@@ -9,7 +9,11 @@ import { AuthService } from '../services/auth.service';
 })
 export class FilmsComponent implements OnInit {
   films!:Film[];
+<<<<<<< HEAD
   constructor(private filmService: FilmService ,public authService: AuthService) {
+=======
+  constructor(private filmService: FilmService,public authService: AuthService ) {
+>>>>>>> 5fe9d44e0b95712a22f7e3f6256d3a64eab3bc65
     
     }
     

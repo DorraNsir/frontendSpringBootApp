@@ -17,6 +17,8 @@ import { LoginComponent } from './login/login.component';
 import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './services/TokenInterceptor';
 
+import { ForbiddenComponent } from './forbidden/forbidden.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,14 +31,18 @@ import { TokenInterceptor } from './services/TokenInterceptor';
     SearchFilterPipe,
     ListeGenresComponent,
     UpdateGenreComponent,
-    LoginComponent
+    LoginComponent,
+    ForbiddenComponent
+
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule  
+    HttpClientModule
+    
   ],
   providers: [
     provideClientHydration(),
