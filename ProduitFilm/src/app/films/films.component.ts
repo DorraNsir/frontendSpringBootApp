@@ -1,7 +1,7 @@
 import { FilmService } from './../services/film.service';
 import { Component, OnInit } from '@angular/core';
 import { Film } from '../model/film.model';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-films',

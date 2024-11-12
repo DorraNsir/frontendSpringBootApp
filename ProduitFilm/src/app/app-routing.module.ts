@@ -17,10 +17,6 @@ const routes: Routes = [
   {path: "rechercheParNom", component : RechercheParNomComponent},
   {path: "listeGenres", component : ListeGenresComponent},
   {path: 'login', component: LoginComponent}
-
-
-
-
 ];
 
 @NgModule({

@@ -27,7 +27,7 @@
         
     addFilm(){
         this.newFilm.genreFilm = this.genreFilms.find(g => g.idG == this.newIdG)!;
-        this.filmService.ajouterfilm(this.newFilm)
+        this.filmService.ajouterFilm(this.newFilm)
         .subscribe(prod => {
         console.log(prod);
         this.router.navigate(['films']);

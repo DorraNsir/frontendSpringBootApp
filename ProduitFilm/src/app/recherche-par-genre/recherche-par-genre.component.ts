@@ -24,7 +24,7 @@ export class RechercheParGenreComponent  {
   }
 
   onChange() {
-    this.filmService.rechercherParGenre(this.IdGenre).
+    this.filmService.rechercherParGere(this.IdGenre).
     subscribe(fil =>{this.films=fil;console.log("liste de film par genre",fil)});
     
     }

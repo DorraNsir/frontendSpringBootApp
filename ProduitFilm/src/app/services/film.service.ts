@@ -1,3 +1,4 @@
+import { AuthService } from './auth.service';
 import { Injectable } from '@angular/core';
 import { Film } from '../model/film.model';
 import { Genre } from '../model/genre.model';
@@ -16,74 +17,78 @@ export class FilmService {
 
   films: Film[] = [];
   genres!: Genre[];
+  
 
-
-
-  constructor(private http : HttpClient) {
+  constructor(private http : HttpClient,private authService: AuthService) {
   }
   listefilms(): Observable<Film[]>{
-    return this.http.get<Film[]>(this.apiURL);
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+    let httpHeaders = new HttpHeaders({"Authorization":jwt})
+    return this.http.get<Film[]>(this.apiURL+"/all",{headers:httpHeaders});
     }
     
-  ajouterfilm( film: Film):Observable<Film>{
-    this.films.push(film);
-    return this.http.post<Film>(this.apiURL, film, httpOptions);
-  }
+    ajouterFilm( prod: Film):Observable<Film>{
+      let jwt = this.authService.getToken();
+      jwt = "Bearer "+jwt;
+      let httpHeaders = new HttpHeaders({"Authorization":jwt})
+      return this.http.post<Film>(this.apiURL+"/addFilm", prod, {headers:httpHeaders});
+      }
+      supprimerFilm(id : number) {
+      const url = `${this.apiURL}/delFilm/${id}`;
+      let jwt = this.authService.getToken();
+      jwt = "Bearer "+jwt;
+      let httpHeaders = new HttpHeaders({"Authorization":jwt})
+      return this.http.delete(url, {headers:httpHeaders});
+      }
+      consulterFilm(id: number): Observable<Film> {
+      const url = `${this.apiURL}/getbyid/${id}`;
+      let jwt = this.authService.getToken();
+      jwt = "Bearer "+jwt;
+      let httpHeaders = new HttpHeaders({"Authorization":jwt})
+      return this.http.get<Film>(url,{headers:httpHeaders});
+      }
+      updateFilm(prod :Film) : Observable<Film> {
+      let jwt = this.authService.getToken();
+      jwt = "Bearer "+jwt;
+      let httpHeaders = new HttpHeaders({"Authorization":jwt})
+      return this.http.put<Film>(this.apiURL+"/updateFilm", prod, {headers:httpHeaders});
+      }
+      listeGenres():Observable<genreWrapped>{
+        let jwt = this.authService.getToken();
+        jwt = "Bearer "+jwt;
+        let httpHeaders = new HttpHeaders({"Authorization":jwt})
+        return this.http.get<genreWrapped>(this.apiURLGen,{headers:httpHeaders}
+        );
+        }
+        rechercherParGere(idG: number): Observable<Film[]> {
+          const url = `${this.apiURL}/genre/${idG}`;
+          const headers = new HttpHeaders({
+            'Authorization': 'Bearer ' + this.authService.getToken() // Replace with the actual method to get token
+          });
+          return this.http.get<Film[]>(url, { headers });
+        }
 
-  supprimerFilm(id : number) {
-    const url = `${this.apiURL}/${id}`;
-    return this.http.delete(url, httpOptions);
-    }
+        rechercherParNom(nom: string):Observable< Film[]> {
+        const url = `${this.apiURL}/filmByName/${nom}`;
+        return this.http.get<Film[]>(url);
+        }
+        ajouterGenre( g: Genre):Observable<Genre>{
+          let jwt = this.authService.getToken();
+          jwt = "Bearer "+jwt;
+          let httpHeaders = new HttpHeaders({"Authorization":jwt})
+        return this.http.post<Genre>(this.apiURLGen, g,  {headers:httpHeaders});
+        }
 
-  updateFilm(film :Film) : Observable<Film>{
-    return this.http.put<Film>(this.apiURL, film, httpOptions);
-    }
+        updateGenre(g:Genre) : Observable<Genre>{
+          let jwt = this.authService.getToken();
+          jwt = "Bearer "+jwt;
+          let httpHeaders = new HttpHeaders({"Authorization":jwt})
+          const url = `${this.apiURLGen}/${g.idG}`;
+          return this.http.put<Genre>(url, g, {headers:httpHeaders});
+        }
 
-  
-  listeGenres(): Observable<genreWrapped> {
-    return this.http.get<genreWrapped>(this.apiURLGen);
-  }
-
-  consulterFilm(id: number): Observable<Film> {
-    const url = `${this.apiURL}/${id}`;
-    return this.http.get<Film>(url);
-    }
-  rechercherParGenre(idG: number):Observable< Film[]> {
-    const url = `${this.apiURL}/genre/${idG}`  ;
-    return this.http.get<Film[]>(url);
-  }
-  rechercherParNom(nom: string):Observable< Film[]> {
-    const url = `${this.apiURL}/filmByName/${nom}`;
-    return this.http.get<Film[]>(url);
-    }
-    ajouterGenre( g: Genre):Observable<Genre>{
-      return this.http.post<Genre>(this.apiURLGen, g, httpOptions);}
-
-      updateGenre( g: Genre):Observable<Genre>{
-        const url = `${this.apiURL}/${g.idG}`;
-        return this.http.put<Genre>(url,g);}
-    
-
-
-
-
-
-        // trierFilm(){
-        //   this.films = this.films.sort((n1,n2) => {
-        //   if (n1.idFilm! > n2.idFilm!) {
-        //   return 1;
-        //   }
-        //   if (n1.idFilm! < n2.idFilm!) {
-        //   return -1;
-        //   }
-        //   return 0;
-        //   });
-        //   } 
-          consulterGenre(id:number): Genre{
-            return this.genres.find(g => g.idG == id)!;
-            }
-          
-
+     
       
 
 }

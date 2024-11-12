@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:ProduitFilm": "node dist/produit-film/server/server.mjs"
+    "serve:ssr:ProduitFilm": "node dist/produit-film/server/server.mjs",
+    "prestart": "rimraf .angular/cache"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +22,7 @@
     "@angular/platform-server": "^18.2.0",
     "@angular/router": "^18.2.0",
     "@angular/ssr": "^18.2.7",
+    "@auth0/angular-jwt": "^5.2.0",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^4.5.3",
     "express": "^4.18.2",
