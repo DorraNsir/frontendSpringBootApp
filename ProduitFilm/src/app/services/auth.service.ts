@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../model/User.model';
+import { User } from '../model/User';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
@@ -12,8 +12,8 @@ export class AuthService {
   token!: string;
 
   users: User[] = [
-    { "username": "admin", "password": "123", "roles": ['ADMIN'] },
-    { "username": "nadhem", "password": "123", "roles": ['USER'] }
+    { username: "admin", password: "123", roles: ["ADMIN"], email: "", enabled: true },
+    { username: "nadhem", password: "123", roles: ["USER"], email: "", enabled: true }
   ];
   
   public loggedUser!: string;
@@ -84,4 +84,23 @@ loadToken() {
 
    isTokenExpired(): Boolean{
   return this.helper.isTokenExpired(this.token); }
+
+  registerUser(user :User){
+    return this.http.post<User>(this.apiURL+'/register', user,
+    {observe:'response'});
+    }
+
+    public regitredUser : User = new User();
+    setRegistredUser(user : User){
+    this.regitredUser=user;
+    }
+    getRegistredUser(){
+    return this.regitredUser;
+    }
+
+    validateEmail(code : string){
+      return this.http.get<User>(this.apiURL+'/verifyEmail/'+code);
+      }
+      
+    
    }

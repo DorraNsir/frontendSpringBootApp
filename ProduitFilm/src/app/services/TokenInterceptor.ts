@@ -7,16 +7,29 @@ import { AuthService } from './auth.service'; // Adjust path as needed
 export class TokenInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService) {}
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    const toExclude = "/login";
-    // Skip adding Authorization header if the request is for the login endpoint
-    if (request.url.search(toExclude) === -1) {
-      const jwt = this.authService.getToken();
-      const reqWithToken = request.clone({ 
-        setHeaders: { Authorization: `Bearer ${jwt}` }
-      });
-      return next.handle(reqWithToken);
+  exclude_array : string[] = ['/login','/register','/verifyEmail'];
+    toExclude(url :string)
+    {
+    var length = this.exclude_array.length;
+    for(var i = 0; i < length; i++) {
+    if( url.search(this.exclude_array[i]) != -1 )
+    return true;
+    }
+    return false;
+  }
+
+
+  intercept(request: HttpRequest<unknown>, next: HttpHandler):
+      Observable<HttpEvent<unknown>> {
+      if (!this.toExclude(request.url))
+      {
+      let jwt = this.authService.getToken();
+      let reqWithToken = request.clone( {
+      setHeaders: { Authorization : "Bearer "+jwt}
+    })
+    return next.handle(reqWithToken);
     }
     return next.handle(request);
   }
+
 }

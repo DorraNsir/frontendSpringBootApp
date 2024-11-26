@@ -1,0 +1,67 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="text-center mb-4">Inscription</h2>
+            <form [formGroup]="myForm" class="p-4 shadow rounded bg-white">
+
+                <div class="alert alert-danger" *ngIf="err">
+                    <strong>{{err}}</strong>
+                </div>
+                <!-- Username Field -->
+                <div class="form-group mb-3">
+                    <label for="username">Nom Utilisateur :</label>
+                    <input type="text" id="username" name="username" class="form-control" formControlName="username" [(ngModel)]="user.username">
+                    <small *ngIf="myForm.controls['username'].hasError('required') && myForm.controls['username'].touched" class="text-danger">
+                        Nom Utilisateur est obligatoire
+                    </small>
+                </div>
+
+                <!-- Email Field -->
+                <div class="form-group mb-3">
+                    <label for="email">Email :</label>
+                    <input type="email" id="email" name="email" class="form-control" formControlName="email" [(ngModel)]="user.email">
+                    <small *ngIf="myForm.controls['email'].hasError('required') && myForm.controls['email'].touched" class="text-danger">
+                        Email est obligatoire
+                    </small>
+                    <small *ngIf="myForm.controls['email'].hasError('email') && myForm.controls['email'].touched" class="text-danger">
+                        Email non valide
+                    </small>
+                </div>
+
+                <!-- Password Field -->
+                <div class="form-group mb-3">
+                    <label for="password">Mot de passe :</label>
+                    <input type="password" id="password" name="password" class="form-control" formControlName="password" [(ngModel)]="user.password">
+                    <small *ngIf="myForm.controls['password'].hasError('required') && myForm.controls['password'].touched" class="text-danger">
+                        Mot de passe est obligatoire
+                    </small>
+                    <small *ngIf="myForm.controls['password'].hasError('minlength') && myForm.controls['password'].touched" class="text-danger">
+                        Mot de passe doit contenir au moins 6 caractères
+                    </small>
+                </div>
+
+                <!-- Confirm Password Field -->
+                <div class="form-group mb-3">
+                    <label for="confirmPassword">Confirmer Mot de passe :</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" formControlName="confirmPassword">
+                    <small *ngIf="myForm.controls['confirmPassword'].hasError('required') && myForm.controls['confirmPassword'].touched" class="text-danger">
+                        Confirmer mot de passe est obligatoire
+                    </small>
+                    <small *ngIf="myForm.get('confirmPassword')?.touched && myForm.get('confirmPassword')?.value != myForm.get('password')?.value" class="text-danger">
+                        Le mot de passe confirmé ne correspond pas au mot de passe tapé
+                    </small>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="d-grid mb-3">
+                    <button type="button" [disabled]="myForm.invalid" class="btn btn-success" (click)="onRegister()">S'inscrire</button>
+                </div>
+
+                <!-- Login Redirect -->
+                <p class="text-center">Vous avez un compte? 
+                    <a routerLink="/login">Login</a>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>

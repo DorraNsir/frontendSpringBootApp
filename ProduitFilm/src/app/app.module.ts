@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FilmsComponent } from './films/films.component';
 import { AddFilmComponent } from './add-film/add-film.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UpdateFilmComponent } from './update-film/update-film.component';
 import { RechercheParGenreComponent } from './recherche-par-genre/recherche-par-genre.component';
 import { RechercheParNomComponent } from './recherche-par-nom/recherche-par-nom.component';
@@ -18,6 +18,8 @@ import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './services/TokenInterceptor';
 
 import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { RegisterComponent } from './register/register.component';
+import { VerifEmailComponent } from './verif-email/verif-email.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
     ListeGenresComponent,
     UpdateGenreComponent,
     LoginComponent,
-    ForbiddenComponent
+    ForbiddenComponent,
+    RegisterComponent,
+    VerifEmailComponent
 
   ],
   
@@ -41,7 +45,8 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
     AppRoutingModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
     
   ],
   providers: [
